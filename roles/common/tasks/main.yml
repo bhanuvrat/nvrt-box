@@ -1,0 +1,23 @@
+---
+# tasks file for common
+
+- name: Common | Update the system
+  apt: update-cache=yes
+
+- name: Common| Install required system packages.
+  apt: pkg={{ item }} state=installed update-cache=yes
+  with_items: system_packages
+  tags:
+    - setup
+
+- name: create groups
+  user: name={{ item }} state=present
+  with_items:
+    - znc
+    - admin
+
+- name: create user
+  user: name=anuvrat comment="Anuvrat Parashar" group=admin state=present
+
+- name: create znc user
+  user: name=znc comment="znc user" group=znc

@@ -1,0 +1,9 @@
+---
+# vars file for common
+
+system_packages:
+  - iftop
+  - tree
+  - htop
+  - mosh
+  - build-essential
